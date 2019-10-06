@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Resume Builder</title>
+    <style>
+        table {
+          font-family: arial, sans-serif;
+          width: 100%;
+        }
+
+        body{
+            font-size: 150%;
+        }
+        td, th {
+          text-align: left;
+          padding: 4px;
+        }
+        tr:nth-child(even) {
+          background-color: #dddddd;
+        }
+    </style>
+</head>
+    <body>
+        <div class = "form-group">
+            <br>
+            <div class='a'>
+                <h1><strong>{{info.name}}</strong></h1>
+                <h3><strong>Applied for : </strong>{{info.resumetitle}}</h3>
+                <p>{{info.biography|linebreaksbr}}</p>
+            </div>
+            <br><br>
+            <div>
+                <table style="width:100%">
+                  <tr>
+                    <th colspan="2"><strong>Personal Info</strong></th>
+                  </tr>
+                  <tr>
+                    <td >City : {{info.city}}</td>
+                    <td >Date of Birth : {{info.birth_date}}</td>
+                  </tr>
+                  <tr>
+                    <td>Mobile Phone : {{info.formatted_phone}}</td>
+                    <td>Email : {{info.email}}</td>
+                  </tr>
+                  <tr>
+                    <td >Address : {{info.city}} - {{info.address|linebreaksbr}}</td>
+                  </tr>
+                </table>
+            </div>
+
+            <br><br>
+            <div>
+                <table style="width:100%">
+                    <tr>
+                        <th><strong>Skills</strong></th>
+                    </tr>
+                    <tr>
+                        {% for skill in info.skills %}
+                            <td >{{ skill }}</td>
+                        {% endfor %}
+                    </tr>
+                </table>
+            </div>
+            <br><br>
+
+            <div>
+                <table style="width:100%">
+                    <tr>
+                        <th colspan="2"><strong>Languages</strong></th>
+                    </tr>
+                    <tr>
+                        {% for language in info.languages %}
+                            <td >{{ language }}</td>
+                        {% endfor %}
+                    </tr>
+                </table>
+            </div>
+            <br><br>
+            <div>
+                <table style="width:100%">
+                  <tr>
+                    <th><strong>Education</strong></th>
+                  </tr>
+                  <tr>
+                    <td >{{info.university}}</td>
+                  </tr>
+                  <tr>
+                    <td >{{info.degrees}} in {{info.major}}</td>
+                  </tr>
+                  <tr>
+                      <td>Graduation Date {{info.graduation}}</td>
+                  </tr>
+                </table>
+            </div>
+        </div>
+    </body>
+</html>

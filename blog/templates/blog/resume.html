@@ -1,0 +1,71 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+    <div class = "form-group">
+        <div class = "date">
+            <p><small>Created Date : {{info.created_date|date:"F d, Y" }}</small></p>
+        </div>
+        <h1><strong>{{info.name}}</strong></h1>
+        <h3><strong>Applied for : </strong>{{info.resumetitle}}</h3>
+        <p>{{info.biography}}</p>
+
+        <div class="row" >
+            <div class="col-md-3">
+                <h3><strong>Personal Info</strong></h3>
+            </div>
+            <div class="col-md-9">
+                <br>
+                <div class="row">
+                    <div class="col-md-6"><p>City : {{info.city}}</p></div>
+                    <div class="col-md-6"><p>Mobile Phone : {{info.formatted_phone}}</p></div>
+                    <div class="col-md-6"><p>Email : {{info.email}}</p></div>
+                    <div class="col-md-6"><p>Date of Birth : {{info.birth_date}}</p></div>
+                    <div class="col-md-9"><p>Address : {{info.city}} - {{info.address|linebreaksbr}}</p></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3">
+                <h3><strong>Skills</strong></h3>
+            </div>
+            <div class="col-md-9">
+                <br>
+                <div class="row">
+                    {% for skill in info.skills %}
+                        <div class="col-md-6"><p>{{ skill }}</p></div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3">
+                <h3><strong>Languages</strong></h3>
+            </div>
+            <div class="col-md-9">
+                <br>
+                <div class="row">
+                    {% for language in info.languages %}
+                        <div class="col-md-6"><p>{{ language }}</p></div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <h3><strong>Education</strong></h3>
+            </div>
+            <div class="col-md-9">
+                <br>
+                <div class="row">
+                    <div class="col-md-9"><p>{{info.university}}</p></div>
+                    <div class="col-md-9"><p>{{info.degrees}} in {{info.major}}</p></div>
+                    <div class="col-md-6"><p>Graduation Date {{info.graduation}}</p></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <a type="button" class="btn btn-primary" href="{% url 'print2pdf' %}">Get Resume</a>
+    </div>
+{% endblock %}
