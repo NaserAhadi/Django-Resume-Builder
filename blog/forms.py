@@ -1,7 +1,9 @@
 from django import forms
 from . models import Personal_info
-from easy_select2 import select2_modelform
-from django_select2.forms import Select2MultipleWidget
+
+
+
+
 
 
 YEARS= [x for x in range(1970,2021)]
